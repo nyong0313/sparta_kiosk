@@ -1,4 +1,4 @@
-package lv5;
+package lv6;
 
 import java.util.List;
 import java.util.Scanner;
@@ -30,11 +30,15 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         while (true) {
+            System.out.println("\n아래 메뉴판을 보시고 메뉴를 골라 입력해주세요.\n");
             System.out.println("[ MAIN MENU ]\n" +
                     "1. Burgers\n" +
                     "2. Drinks\n" +
                     "3. Desserts\n" +
-                    "0. 종료      | 종료");
+                    "0. 종료      | 종료\n\n" +
+                    "[ ORDER MENU ]\n" +
+                    "4. Orders       | 장바구니를 확인 후 주문합니다.\n" +
+                    "5. Cancel       | 진행중인 주문을 취소합니다.");
             int choice = sc.nextInt();
             if (choice == 1) {
                 bugersKiosk.start();
@@ -45,6 +49,7 @@ public class Main {
             else if (choice == 3) {
                 dessertsKiosk.start();
             }
+            // Cancel == 종료
             else {
                 break;
             }
