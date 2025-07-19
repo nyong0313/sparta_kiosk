@@ -20,10 +20,10 @@ public class Main {
                 new MenuItem(2, "Cheeseball", 5.0, "치즈볼~~")
         ));
 
-        Kiosk bugersKiosk = new Kiosk(burgersMenu);
-        Kiosk drinksKiosk = new Kiosk(drinksMenu);
-        Kiosk dessertsKiosk = new Kiosk(dessertsMenu);
-
+        ShoppingBag shoppingBag = new ShoppingBag();
+        Kiosk bugersKiosk = new Kiosk(burgersMenu, shoppingBag);
+        Kiosk drinksKiosk = new Kiosk(drinksMenu, shoppingBag);
+        Kiosk dessertsKiosk = new Kiosk(dessertsMenu, shoppingBag);
 
 //        여기 자연스럽게 고치기.
 //                예외 구문도 넣기.
@@ -40,16 +40,14 @@ public class Main {
                     "4. Orders       | 장바구니를 확인 후 주문합니다.\n" +
                     "5. Cancel       | 진행중인 주문을 취소합니다.");
             int choice = sc.nextInt();
-            if (choice == 1) {
-                bugersKiosk.start();
+            if (choice == 1) bugersKiosk.start();
+            else if (choice == 2) drinksKiosk.start();
+            else if (choice == 3) dessertsKiosk.start();
+            else if (choice == 4) {
+                shoppingBag.order();
+                break;
             }
-            else if (choice == 2) {
-                drinksKiosk.start();
-            }
-            else if (choice == 3) {
-                dessertsKiosk.start();
-            }
-            // Cancel == 종료
+            // 종료 and Cancel: 프로그램 종료
             else {
                 break;
             }

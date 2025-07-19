@@ -4,9 +4,10 @@ import java.util.Scanner;
 
 public class Kiosk {
     private final Menu menu;
-    private final ShoppingBag shoppingBag = new ShoppingBag();
-    public Kiosk(Menu menu) {
+    private final ShoppingBag shoppingBag;
+    public Kiosk(Menu menu, ShoppingBag shoppingBag) {
         this.menu = menu;
+        this.shoppingBag = shoppingBag;
     }
 
     public void start() {
