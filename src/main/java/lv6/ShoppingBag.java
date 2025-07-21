@@ -30,6 +30,8 @@ public class ShoppingBag {
     }
 
     public void order(){
+        if (shoppingItems.isEmpty()) throw new IllegalStateException("장바구니가 비어 있어 주문을 할 수 없습니다.");
+
         System.out.println("\n아래와 같이 주문 하시겠습니까?\n\n" +
                 "[ Orders ]");
         shoppingItems.stream()
@@ -45,7 +47,16 @@ public class ShoppingBag {
         System.out.println("\n1. 주문      2. 메뉴판");
         Scanner sc = new Scanner(System.in);
         int choice = sc.nextInt();
-        if(choice == 1)
+        if(choice == 1) {
             System.out.printf("주문이 완료되었습니다. 금액은 ₩ %4.1f입니다.\n", getTotalPrice());
+            shoppingItems.clear();
+        }
+    }
+
+    public void clear() {
+        if (shoppingItems.isEmpty()) throw new IllegalStateException("장바구니가 비어 있어 주문을 취소할 수 없습니다.");
+
+        shoppingItems.clear();
+        System.out.println("모든 주문이 취소되었습니다.");
     }
 }
