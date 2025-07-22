@@ -36,10 +36,12 @@ public class Main {
                         "1. Burgers\n" +
                         "2. Drinks\n" +
                         "3. Desserts\n" +
-                        "0. 종료      | 종료\n\n" +
-                        "[ ORDER MENU ]\n" +
-                        "4. Orders       | 장바구니를 확인 후 주문합니다.\n" +
-                        "5. Cancel       | 진행중인 주문을 취소합니다.");
+                        "0. 종료      | 종료");
+                if (!shoppingBag.getShoppingItems().isEmpty()) {
+                    System.out.println("\n[ ORDER MENU ]\n" +
+                            "4. Orders       | 장바구니를 확인 후 주문합니다.\n" +
+                            "5. Cancel       | 진행중인 주문을 취소합니다.");
+                }
                 int choice = sc.nextInt();
                 if (choice == 1) bugersKiosk.start();
                 else if (choice == 2) drinksKiosk.start();
