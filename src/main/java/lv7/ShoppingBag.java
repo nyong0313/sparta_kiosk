@@ -50,7 +50,7 @@ public class ShoppingBag {
         System.out.println("\n1. 주문      2. 메뉴판");
         int choice = sc.nextInt();
         if(choice == 1) {
-            double finalPrice = discount(totalPrice);
+            double finalPrice = applyDiscount(totalPrice);
             System.out.printf("주문이 완료되었습니다. 금액은 ₩ %4.1f입니다.\n", finalPrice);
             shoppingItems.clear();
         }
@@ -65,7 +65,7 @@ public class ShoppingBag {
         System.out.println("모든 주문이 취소되었습니다.");
     }
     // 할인
-    public double discount(double price) {
+    public double applyDiscount(double price) {
         System.out.println("할인 정보를 입력해주세요.\n" +
                 "1. 국가유공자 : 10% \n" +
                 "2. 군인     :  5%\n" +
@@ -73,17 +73,6 @@ public class ShoppingBag {
                 "4. 일반     :  0%");
         int choice = sc.nextInt();
         Person person = Person.fromPerson(choice);
-        switch (person) {
-            case VETERAN:
-                return price * 0.9;
-            case SOLDIER:
-                return price * 0.8;
-            case STUDENT:
-                return price * 0.7;
-            case REGULAR:
-                return price;
-            default:
-                throw new IllegalArgumentException("잘못된 입력입니다.");
-        }
+        return price * person.getDiscountRate();
     }
 }
