@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class ShoppingBag {
     private final List<ShoppingItem> shoppingItems = new ArrayList<>();
+    private final Scanner sc = new Scanner(System.in);
 
     public void addShoppingItem(MenuItem menuItem) {
         ShoppingItem shoppingItem = new ShoppingItem(menuItem);
@@ -46,7 +47,6 @@ public class ShoppingBag {
         System.out.printf("₩ %4.1f\n", totalPrice);
 
         System.out.println("\n1. 주문      2. 메뉴판");
-        Scanner sc = new Scanner(System.in);
         int choice = sc.nextInt();
         if(choice == 1) {
             double finalPrice = discount(totalPrice);
@@ -70,7 +70,6 @@ public class ShoppingBag {
                 "2. 군인     :  5%\n" +
                 "3. 학생     :  3%\n" +
                 "4. 일반     :  0%");
-        Scanner sc = new Scanner(System.in);
         int choice = sc.nextInt();
         Person person = Person.fromPerson(choice);
         switch (person) {
