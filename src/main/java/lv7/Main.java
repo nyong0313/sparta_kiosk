@@ -5,12 +5,13 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        // 메뉴생성
         Menu burgersMenu = createBurgersMenu();
         Menu drinksMenu =  createDrinksMenu();
         Menu dessertsMenu =  createDessertsMenu();
-
+        // 장바구니 생성
         ShoppingBag shoppingBag = new ShoppingBag();
-
+        // 메뉴별 키오스크 생성
         Kiosk burgersKiosk = new Kiosk(burgersMenu, shoppingBag);
         Kiosk drinksKiosk = new Kiosk(drinksMenu, shoppingBag);
         Kiosk dessertsKiosk = new Kiosk(dessertsMenu, shoppingBag);
@@ -19,6 +20,7 @@ public class Main {
         while (true) {
             try {
                 printMainMenu();
+                // 장바구니에 물건이 있을 경우에만 출력
                 if (!shoppingBag.getShoppingItems().isEmpty()) {
                     printOrderMenu();
                 }

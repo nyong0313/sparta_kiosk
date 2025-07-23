@@ -13,6 +13,7 @@ public class Menu {
         return menuItems;
     }
 
+    // 해당 메뉴의 아이템 모두 출력
     public void showMenu() {
         System.out.println("[ SHAKESHACK MENU ]");
         menuItems.stream()
@@ -25,6 +26,7 @@ public class Menu {
         System.out.println(" 0. 뒤로가기");
     };
 
+    // 선택한 아이템 반환
     public MenuItem selectedMenu(int num) {
         MenuItem menuItem = menuItems.stream()
                 .filter(item -> item.getId() == num)
